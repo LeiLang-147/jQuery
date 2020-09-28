@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            background-color: #000000;
+        }
+        .wrap{
+            width: 640px;
+            margin: 100px auto;
+            overflow: hidden;
+            border: 1px solid #ffffff;
+        } 
+        li{
+            width: 200px;
+            height: 200px;
+            list-style: none;
+            float: left;
+        }
+        li:nth-child(1){
+            padding: 10px 5px 5px 10px;
+        }
+        li:nth-child(2){
+            padding: 10px 5px 5px 5px;
+        }
+        li:nth-child(3){
+            padding: 10px 10px 5px 5px;
+        }
+        li:nth-child(4){
+            padding: 5px 5px 10px 10px;
+        }
+        li:nth-child(5){
+            padding: 5px 5px 10px 5px;
+        }
+        li:nth-child(6){
+            padding: 5px 10px 10px 5px;
+        }
+        li>img{
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+    <script src="jquery-3.4.1.min.js"></script>
+</head>
+<body>
+    <div class="wrap">
+        <li><img src="../img/2.jpg" alt=""></li>
+        <li><img src="../img/3.jpg" alt=""></li>
+        <li><img src="../img/4.jpg" alt=""></li>
+        <li><img src="../img/5.jpg" alt=""></li>
+        <li><img src="../img/6.jpg" alt=""></li>
+        <li><img src="../img/7.jpg" alt=""></li>
+    </div>
+
+    <script>
+
+        //hover() 里面两个参数，第一个进入时  第二个移出时
+        $(function(){
+            $('.wrap li').hover(function(){
+                $(this).siblings().stop().fadeTo(400, 0.5);
+            }, function(){
+                $(this).siblings().stop().fadeTo(400, 1);
+            });
+        })
+    </script>
+</body>
+</html>

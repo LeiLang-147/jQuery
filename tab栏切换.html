@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="jquery-3.4.1.min.js"></script>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            user-select: none;
+        }
+        body{
+            background-color: #cccccc;
+        }
+        .wrap{
+            width: 1000px;
+            height: 500px;
+            margin: 50px auto;
+            background-color: #ffffff;
+        }
+        .tab{
+            height: 40px;
+            list-style: none;
+            background-color: #666666;
+        }
+        .tab li{
+            float: left;
+            line-height: 40px;
+            width: 120px;
+            text-align: center;
+            cursor: pointer;
+        }
+        .item{
+            padding: 10px;
+            display: none;
+        }
+        .current{
+            background-color: rgb(202, 21, 21);
+            color: #ffffff;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <ul class="tab">
+            <li class="current">商品介绍</li>
+            <li>规格与包装</li>
+            <li>售后服务</li>
+            <li>商品评价</li>
+            <li>手机社区</li>
+        </ul>
+        <div class="content">
+            <div class="item" style="display: block;">
+                <p>分辨率：1920*1080（FDN）</p>
+                <p>分辨率：1920*1080（FDN）</p>
+                <p>分辨率：1920*1080（FDN）</p>
+                <p>分辨率：1920*1080（FDN）</p>
+                <p>分辨率：1920*1080（FDN）</p>
+                <p>分辨率：1920*1080（FDN）</p>
+            </div>
+            <div class="item">
+                <p>规格与包装</p>
+                <p>规格与包装</p>
+                <p>规格与包装</p>
+                <p>规格与包装</p>
+                <p>规格与包装</p>
+                <p>规格与包装</p>
+                <p>规格与包装</p>
+            </div>
+            <div class="item">
+                <p>售后服务</p>
+                <p>售后服务</p>
+                <p>售后服务</p>
+                <p>售后服务</p>
+                <p>售后服务</p>
+                <p>售后服务</p>
+            </div>
+            <div class="item">
+                <p>商品评价</p>
+                <p>商品评价</p>
+                <p>商品评价</p>
+                <p>商品评价</p>
+                <p>商品评价</p>
+                <p>商品评价</p>
+                <p>商品评价</p>
+            </div>
+            <div class="item">
+                <p>手机社区</p>
+                <p>手机社区</p>
+                <p>手机社区</p>
+                <p>手机社区</p>
+                <p>手机社区</p>
+                <p>手机社区</p>
+                <p>手机社区</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $(function(){
+            $('li').click(function(){
+                var index = $(this).index();
+                console.log(index);
+                $(this).addClass('current').siblings().removeClass('current');
+                $('.item').eq(index).show().siblings().hide();
+            });
+        });
+    </script>
+</body>
+</html>

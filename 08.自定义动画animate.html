@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            width: 200px;
+            height: 200px;
+            background-color: coral;
+            position: absolute;
+        }
+    </style>
+    <script src="jquery-3.4.1.min.js"></script>
+</head>
+<body>
+    <button>动起来</button>
+    <div></div>
+
+    <script>
+
+        /* 
+            animate(params, [speed], [easing], [fn])
+                参数：
+                    params：想要更改的样式属性，以对象形式传递，必须写。属性名可以不用带引号，
+                            如果是复合属性，则需要采用驼峰命名法borderLedt。
+                    speed：三种预定速度之一的字符串("slow", "normal", "fast")，或动画时长的毫秒值(如：1000)
+                    easing：(Optional)用来指定切换效果，默认是"swing"，可用参数"linear".       
+                    fn：回调函数
+
+                params必须写，其余参数可省略不写
+         */
+
+        $(function(){
+            $('button').click(function(){
+                $('div').animate({
+                    left:"500px",
+                    top:"200px",
+                    width:"350px",
+                    height:"120px"
+                },1000)
+            })
+        })
+    </script>
+</body>
+</html>

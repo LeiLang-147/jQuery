@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .wrap{
+            width: 200px;
+            height: 210px;
+            padding-left: 20px;
+            border: 1px solid rebeccapurple;
+            margin: 100px auto;
+        }
+        .all{
+            height: 50px;
+            line-height: 50px;
+        }
+        .center{
+            padding-left: 30px;
+        }
+        span{
+            display: inline-block;
+            width: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <div class="all">
+            <input type="checkbox">全选
+        </div>
+        <div class="center">
+            <input type="checkbox"><span></span><label>item 1</label><br>
+            <input type="checkbox"><span></span><label>item 2</label><br>
+            <input type="checkbox"><span></span><label>item 3</label><br>
+            <input type="checkbox"><span></span><label>item 4</label><br>
+            <input type="checkbox"><span></span><label>item 5</label><br>
+        </div>
+        <div class="all"">
+            <input type="checkbox">全选
+        </div>
+    </div>
+
+    <script src="jquery-3.4.1.min.js"></script>
+    <script>
+        $(function(){
+            $(".all input").click(function(){
+                $(".center input, .all input").prop("checked", $(this).prop("checked"))
+            })
+
+            //通过小的复选框控制全选按钮
+            $(".center input").change(function(){
+                //console.log($(".center input:checked").length);
+                if($(".center input:checked").length == $(".center input").length){
+                    $(".all input").prop("checked", true);
+                }else{
+                    $(".all input").prop("checked", false);
+                }
+            })
+        })
+    </script>
+</body>
+</html>

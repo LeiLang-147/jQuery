@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="jquery-3.4.1.min.js"></script>
+    <style>
+        button{
+            margin-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <button>按钮</button>
+    <button>按钮</button>
+    <button>按钮</button>
+    <button>按钮</button>
+    <button>按钮</button>
+    <button>按钮</button>
+    <button>按钮</button>
+    <button>按钮</button>
+
+    <script>
+        $(function(){
+            //1.隐式迭代 给所有按钮都绑定了点击事件
+            $('button').click(function(){
+                //2.改变当前元素的背景颜色
+                $(this).css('background', 'red');
+                //3.去掉其余相抵的背景颜色
+                $(this).siblings('button').css('background', '');
+            })
+        })
+    </script>
+</body>
+</html>

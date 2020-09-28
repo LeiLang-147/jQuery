@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="jquery-3.4.1.min.js"></script>
+    <style>
+        div{
+            width: 200px;
+            height: 200px;
+            background-color: sandybrown;
+        }
+    </style>
+</head>
+<body>
+    <button>显示</button>
+    <button>隐藏</button>
+    <button>切换</button>
+    <div></div>
+
+    <script>
+        /* 
+            show(speed, easing, fn)
+                参数都可以省略，无动画直接显示
+                speed：三种预定速度之一的字符串("slow", "normal", "fast")，或动画时长的毫秒值(如：1000)
+                easing：(Optional)用来指定切换效果，默认是"swing"，可用参数"linear".
+                fn：回调函数
+        */
+        $(function(){
+            /* $('button').click(function(){
+                if($(this).index() == 0){
+                    $('div').show("slow");
+                }else if($(this).index() == 1){
+                    $('div').hide("slow");
+                }else{
+                    $('div').tooltip("slow");
+                }
+            }) */
+            $('button').eq(1).click(function(){
+                $('div').hide("slow");
+            });
+            $('button').eq(0).click(function(){
+                $('div').show("slow");
+            });
+            $('button').eq(2).click(function(){
+                $('div').toggle();
+            });
+        })
+    </script>
+</body>
+</html>

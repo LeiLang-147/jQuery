@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            width: 200px;
+            height: 200px;
+            background-color: springgreen;
+        }
+        .current{
+            background-color: tomato;
+        }
+        li{
+            width: 50px;
+            height: 50px;
+            background-color: teal;
+            margin-top: 5px;
+        }
+        ol li{
+            background-color: tomato;
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+
+    <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+
+    <ol>
+        <li></li>
+    </ol>
+
+    <script src="jquery-3.4.1.min.js"></script>
+    <script>
+
+        $(function(){
+
+            //1.里面可以绑定一个或多个事件
+
+            $("div").on({
+                click:function(){
+                    $(this).css("backgroundColor", "red");
+                },
+                mouseenter:function(){
+                    $(this).css("backgroundColor", "green");
+                },
+                mouseleave:function(){
+                    $(this).css("backgroundColor", "blue");
+                },
+            })
+
+            /* $("div").on("mouseenter mouseleave", function () { 
+                $(this).toggleClass("current");
+             }); */
+
+
+             //2.事件委托  click是绑定在ul身上的，但是触发事件的是li
+            $("ul").on("click", "li", function () { 
+                alert(1);
+            });
+
+
+            //3.on可以给动态创建的元素绑定事件
+            $("ol").on("click", "li", function () { 
+                alert(1);
+            });
+
+            var li = $("<li>新的li</li>");
+            $("ol").append(li)
+
+
+            //4.off()  解绑事件  
+            //$("div").off()//没有参数时，解绑偶有事件 
+            $("div").off("click")   //解绑指定事件
+            $("ol").off("click", "li"); //解绑委任事件
+
+            $("div").one("click", function(){
+                alert(1)
+            }) //只执行一次的事件
+
+            
+            //自动触发事件
+            $("div").click();
+            $("div").trigger("click");
+            $("div").triggerHandler("click");//不会触发默认事件
+        
+
+
+        })
+    </script>
+</body>
+</html>

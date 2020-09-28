@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .price{
+            width: 50px;
+            margin-left: 20px;
+            margin-right: 50px;
+            float: left;
+        }
+        .wrap{
+            position: relative;
+            width: 600px;
+            padding: 20px;
+            margin: 20px auto;
+            background-color:#eee;
+            overflow: hidden;
+        }
+        .hang,
+        .hang1{
+            width: 100%;
+            line-height: 20px;
+            overflow: hidden;
+            margin-top: 20px;
+        }
+        .hang1{
+            width: 80%;
+            margin: auto;
+            padding: 20px;
+        }
+        .current{
+            background-color: snow;
+        }
+        .one{
+            width: 150px;
+            float: left;
+        }
+        i{
+            display: inline-block;
+            
+            user-select: none;
+            width: 20px;
+            height: 20px;
+            font-style: normal;
+            font-size: 16px;
+            background-color: #cccccc;
+            text-align: center;
+            line-height: 20px;
+            vertical-align: middle;
+            cursor: pointer;
+        }
+        span{
+            display: inline-block;
+            width: 50px;
+            height: 20px;
+            vertical-align: middle;
+            border: none;
+            outline: none;
+            background-color: #aaaaaa;
+            text-align: center;
+            line-height: 20px;
+        }
+        .money{
+            float: left;
+        }
+
+        .res{
+            padding-bottom: 20px;
+        }
+        .resNum{
+            width: 100px;
+            margin-left: 30px;
+            float: left;
+        }
+       
+        .resMoney{
+            width: 100px;
+            color: red;
+            font-size: 20px;
+            font-weight: bold;
+            margin-left: 50px;
+            float: left;
+        }
+        .goPay{
+            width: 80px;
+            float: left;
+        }
+        button{
+            width: 60px;
+            outline: none;
+
+        }
+        .zero{
+            float: left;
+        }
+        .del{
+            float: left;
+            margin-left: 50px;
+            
+        }
+        .check,
+        .checkAll{
+            display: block;
+            float: left;
+            margin-top: 3px;
+        }
+        em{
+            font-style: normal;
+            font-size: 14px;
+            display: block;
+            float: left;
+            margin-left: 5px;
+        }
+        .clear{
+            float: right;
+            margin-right: 20px;
+        }
+        .clear button{
+            width: 100px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="wrap">
+        <div class="hang">
+            <div class="clear">
+                <button>清空购物车</button>
+            </div>
+        </div>
+
+        <div class="hang">
+            <input class="checkAll" type="checkbox"><em>全选</em>
+        </div>
+
+        <div class="hang1 current">
+            <input class="check" type="checkbox" checked>
+            <div class="price">￥12.60</div>
+             <div class="one">
+                <i class="sub">-</i>
+                <span class="num">1</span>
+                <i class="add">+</i>
+            </div>
+            <div class="money">￥12.60</div>
+            <div class="del">
+                <button>删除</button>
+            </div>
+        </div>
+        
+
+        <div class="hang1">
+            <input class="check" type="checkbox">
+            <div class="price">￥24.80</div>
+            <div class="one">
+                <i class="sub">-</i>
+                <span class="num">1</span>
+                <i class="add">+</i>
+            </div>
+            <div class="money">￥24.80</div>
+            <div class="del">
+                <button>删除</button>
+            </div>
+        </div>
+        
+
+        <div class="hang1">
+            <input class="check" type="checkbox">
+            <div class="price">￥29.80</div>
+            <div class="one">
+                <i class="sub">-</i>
+                <span class="num">1</span>
+                <i class="add">+</i>
+            </div>
+            <div class="money">￥29.80</div>
+            <div class="del">
+                <button>删除</button>
+            </div>
+        </div>
+        
+        <div class="hang">
+            <input class="checkAll" type="checkbox"><em>全选</em>
+        </div>
+
+
+        <div class="hang res">
+            <div class="zero">
+                <button class="toZero">清零</button>
+                <button class="delChose">删除勾选</button>
+            </div>
+            <div class="resNum">总数：<span>3</span></div>
+            <div class="resMoney">￥67.20</div>
+            <div class="goPay">
+                <button>去付款</button>
+            </div>
+        </div>
+        
+    </div>
+    
+
+    <script src="jquery-3.4.1.min.js"></script>
+    <script>
+        $(function(){
+
+            //全选全不选
+            $(".checkAll").click(function(){
+                console.log($(this).prop("checked"));
+                $(".checkAll, .check").prop("checked", $(this).prop("checked"));
+                //通过类名添加背景颜色
+                if($(this).prop("checked")){
+                    $(".check").parent().addClass("current");
+                }else{
+                    $(".check").parent().removeClass("current");
+                }
+            })
+            //通过小的复选框控制全选按钮
+            $(".check").change(function(){
+                //console.log($(".center input:checked").length);
+                if($(".check:checked").length == $(".check").length){
+                    $(".checkAll").prop("checked", true);
+                }else{
+                    $(".checkAll").prop("checked", false);
+                }
+                //通过类名添加背景颜色
+                if($(this).prop("checked")){
+                    $(this).parent().addClass("current");
+                }else{
+                    $(this).parent().removeClass("current");
+                }
+            })
+
+            //加
+            $(".add").click(function(){
+                //var index = $(this).index();
+                var val = $(this).siblings(".num").text();
+                val++;
+                $(this).siblings(".num").text(val);
+
+                //parents("名字")  指定的祖先元素
+                var p = $(this).parent().siblings(".price").text();
+                //substr()  截取字符串
+                p = p.substr(1);
+                var res = p * val;
+                //toFixed()  保留几位小数
+                $(this).parent().siblings(".money").text("￥" + res.toFixed(2));
+
+                getSum();
+            });
+
+            //减
+            $(".sub").click(function(){
+                var val = Number($(this).siblings(".num").text());
+                if(val == 0){
+                    return false;
+                }
+                val--;
+                $(this).siblings(".num").text(val);
+
+                var p = $(this).parent().siblings(".price").text();
+                p = p.substr(1);
+                var res = p * val;
+                $(this).parent().siblings(".money").text("￥" + res.toFixed(2));
+
+                getSum();
+            });
+
+            //清零
+            $(".toZero").click(function(){
+                $(".num").each(function(i, ele){
+                    $(ele).text(0);
+                });
+                $(".money").each(function(i, ele){
+                    $(ele).text("￥0.00");
+                });
+
+                $(".resNum span").text(0);
+                $(".resMoney").text("￥0.00");
+            })
+
+
+            //计算总计和总额
+            getSum();
+            function getSum(){
+                var count = 0;//计算总数
+                var money = 0;//计算总价钱
+                
+                $(".num").each(function(i, ele){
+                    count += +$(ele).text();
+                });
+                $(".resNum span").text(count);
+
+                $(".money").each(function(i, ele){
+                    var p = $(ele).text();
+                    p = p.substr(1);
+                    money += +p;
+                });
+                $(".resMoney").text("￥"+ money.toFixed(2));
+            }
+
+            //清空购物车
+            $(".clear button").click(function () { 
+                $(".check").parents(".hang1").remove();
+             })
+            
+            //删除
+            $(".del").click(function(){
+                $(this).parents(".hang1").remove();
+                getSum();
+            })
+
+            //删除已勾选
+            $(".delChose").click(function(){
+                $(".check:checked").parents(".hang1").remove();
+                getSum();
+            });
+
+
+        })
+    </script>
+</body>
+</html>
